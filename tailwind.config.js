@@ -1,5 +1,7 @@
 module.exports = {
-  content: [],
+  content: [
+    "./src/components/Hero.js",
+  ],
   theme: {
     extend: {},
   },
