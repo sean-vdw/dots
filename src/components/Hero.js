@@ -17,10 +17,10 @@ const Hero = () => {
           alt="Dots Logo"
         />
       </div>
-      <div className="flex justify-center text-center py-36 w-3/4 m-auto">
+      <div className="flex justify-center text-center py-20 md:py-36 w-3/4 m-auto">
         <Title className="uppercase">The Best Messaging Experience Ever Made</Title>
       </div>
-      <div className="flex-col justify-center text-center align mt-24 w-7/12 m-auto">
+      <div className="flex-col justify-center text-center align mt-16 md:mt-24 w-10/12 sm:w-7/12 m-auto">
         <Subtitle className="uppercase pb-4">Join the Waitlist</Subtitle>
         <Formbox className="p-8 flex justify-around align-middle">
           <FormLabel htmlFor="emailForm">EMAIL</FormLabel>
