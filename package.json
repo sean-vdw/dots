@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@botpoison/browser": "^0.1.30",
+    "@formspark/use-formspark": "^0.1.38",
     "@headlessui/react": "^1.4.3",
     "@heroicons/react": "^1.0.5",
     "@testing-library/jest-dom": "^5.16.2",
