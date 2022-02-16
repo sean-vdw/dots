@@ -15,15 +15,18 @@ const botpoison = new Botpoison({
 const Hero = () => {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const { solution } = await botpoison.challenge();
     await axios.post("https://submit-form.com/hyu9ebr7", {
       message,
       _botpoison: solution,
     });
     setSuccess(true);
+    setLoading(false);
   };
 
   return (
@@ -35,14 +38,14 @@ const Hero = () => {
           alt="Dots Logo"
         />
       </div>
-      <div className="flex justify-center text-center py-20 md:py-36 w-3/4 m-auto">
-        <Title className="uppercase">The Best Messaging Experience Ever Made</Title>
+      <div className="flex justify-center text-center py-20 md:py-28 w-3/4 md:w-1/2 m-auto">
+        <Title className="uppercase text-2xl">The Best Messaging Experience Ever Made</Title>
       </div>
-      <div className="flex-col justify-center text-center align mt-16 md:mt-24 w-10/12 sm:w-7/12 m-auto">
-        <Subtitle className="uppercase pb-4">Join the Waitlist</Subtitle>
+      <div className={`flex-col justify-center text-center align mt-16 md:mt-24 w-10/12 sm:w-7/12 m-auto ${loading ? `animate-pulse` : null}`}>
+        <Subtitle className="uppercase text-xl pb-4">Join the Waitlist</Subtitle>
         <Formbox className="p-8 flex justify-around align-middle">
-          <FormLabel htmlFor="emailForm">EMAIL</FormLabel>
-          <form id="emailForm" onSubmit={onSubmit} className="w-3/4 flex">
+          <FormLabel htmlFor="emailForm" className="text-base hidden md:flex">EMAIL</FormLabel>
+          <form id="emailForm" onSubmit={onSubmit} className="w-full md:w-3/4 flex">
             <FormInput
               name="message"
               value={message}
@@ -73,13 +76,11 @@ const HeroContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 850px;
 `;
 
 const Title = styled.h1`
   font-weight: 400;
-  font-size: 2.5rem;
-  line-height: 59px;
   text-align: center;
   letter-spacing: 0.3em;
   color: #FFFFFF; 
@@ -87,8 +88,6 @@ const Title = styled.h1`
 
 const Subtitle = styled.h2`
   font-weight: 300;
-  font-size: 1.5rem;
-  line-height: 29px;
   letter-spacing: 0.33em;
   color: #FFFFFF;
 `;
@@ -100,8 +99,6 @@ const Formbox = styled.div`
 `;
 
 const FormLabel = styled.label`
-  font-size: 1.25rem;
-  line-height: 29px;
   letter-spacing: 0.33em;
   color: #FFFFFF;
   margin: auto;
